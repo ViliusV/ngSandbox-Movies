@@ -1,0 +1,14 @@
+<div *ngIf="film">
+    <button (click)="setDetails()">Read More</button>
+    <div *ngIf="film.summary">
+        {{film.summary}}
+        <div>
+            <button *ngIf="!trailerUrl" (click)="setTrailer()">
+                Show trailer
+            </button>
+            <div *ngIf="trailerUrl">
+                    <iframe width="560" height="315" [src]="trailerUrl" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>

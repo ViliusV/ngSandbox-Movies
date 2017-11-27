@@ -5,14 +5,17 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppComponent } from './app.component';
 import { FilmsComponent } from './components/films/films.component';
+import { FilmDetailsComponent} from './components/film-details/film-details.component';
 
 import { DummyFilmService }  from './services/dummy-film.service';
 import { FilmService } from './services/film.service';
+import { TrailerService } from './services/trailer.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilmsComponent
+    FilmsComponent,
+    FilmDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,7 @@ import { FilmService } from './services/film.service';
       DummyFilmService, { dataEncapsulation: false }
     )
   ],
-  providers: [ FilmService ],
+  providers: [ FilmService, TrailerService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

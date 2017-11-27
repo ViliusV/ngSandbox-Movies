@@ -24,6 +24,14 @@ export class FilmService {
             );
     }
 
+    getDetails(film: Film): Observable<Film> {
+        return this.http.get<Film>(`${this.filmsUrl}?id=${film.id}`)
+        .pipe(
+            tap(_ => console.log(`fetched film ${film.id} details`)),
+            catchError(this.handleError('getDetails', null))
+        );
+    }
+
     private handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
 

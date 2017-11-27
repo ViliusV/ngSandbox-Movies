@@ -3,5 +3,6 @@
 <ul>
     <li *ngFor="let film of films">
         <span>{{film.title}}</span>
+        <app-film-details [film] = "film"></app-film-details>
     </li>
 </ul>
