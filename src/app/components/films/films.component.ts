@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import {Film} from '../../entities/film';
+import { Film } from '../../entities/film';
 
-import {FilmService} from '../../services/film.service';
+import { FilmService } from '../../services/film.service';
 
 @Component({
     selector: 'app-films',
@@ -12,15 +12,15 @@ import {FilmService} from '../../services/film.service';
 export class FilmsComponent implements OnInit {
     films: Film[];
 
-    constructor(private filmService: FilmService){
+    constructor(private filmService: FilmService) {
 
     }
 
-    ngOnInit(){
+    ngOnInit() {
         this.fillList();
     }
 
-    fillList(): void{
+    fillList(): void {
         this.filmService.get()
             .subscribe(films => this.films = films);
     }

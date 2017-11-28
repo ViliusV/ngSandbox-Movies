@@ -1,14 +1,15 @@
 <div *ngIf="film">
-    <button (click)="setDetails()">Read More</button>
-    <div *ngIf="film.summary">
-        {{film.summary}}
+    <button (click)="toggleReadMoreView()">Read {{isReadMoreShown ?  "Less": "More" }}</button>
+    <div *ngIf="isReadMoreShown">
+        <div>{{film.summary}}</div>
         <div>
-            <button *ngIf="!trailerUrl" (click)="setTrailer()">
-                Show trailer
-            </button>
             <div *ngIf="trailerUrl">
                     <iframe width="560" height="315" [src]="trailerUrl" frameborder="0" allowfullscreen></iframe>
             </div>
+        </div>
+        <button (click)="toggleDetailsView()">{{areDetailsShown ? "Hide" : "Show"}} spoiler</button>
+        <div *ngIf="areDetailsShown">
+            <div>{{film.plot}}</div>
         </div>
     </div>
 </div>

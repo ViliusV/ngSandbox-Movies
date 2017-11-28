@@ -1,32 +1,32 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
+
+import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import { Film } from '../entities/film';
 
 
 @Injectable()
 export class FilmService {
-    private filmsUrl = 'api/films';
-
-
-    constructor(private http: HttpClient) {
-
+    constructor(private db: AngularFireDatabase) {
     }
 
     get(): Observable<Film[]> {
-        return this.http.get<Film[]>(this.filmsUrl)
-            .pipe(
-                tap(_ => console.log('fetched films')),
-                catchError(this.handleError('get', []))
-            );
+        return this.db.list('film').snapshotChanges().pipe(
+            map(changes => {
+                return changes.map(f =>
+                    ({ id: f.payload.key, ...f.payload.val() }))
+            }),
+            tap(_ => console.log('fetched films')),
+            catchError(this.handleError('get', []))
+        );
     }
 
     getDetails(film: Film): Observable<Film> {
-        return this.http.get<Film>(`${this.filmsUrl}?id=${film.id}`)
-        .pipe(
+        return this.db.object<Film>(`film-details/${film.id}`).valueChanges().pipe(
             tap(_ => console.log(`fetched film ${film.id} details`)),
             catchError(this.handleError('getDetails', null))
         );
