@@ -45,6 +45,7 @@ export class FilmDetailsComponent implements OnInit {
     }
 
     setDetails(){
+        //ToDo: check if user is authenticated
         this.filmService.getDetails(this.film).subscribe(
             f => this.film.plot = f != null? f.plot : null
         );

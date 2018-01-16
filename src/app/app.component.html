@@ -1,4 +1,12 @@
+<div class="status" [ngClass]="{'user-logged-in': isAuthenticated, 'user-anonymous': !isAuthenticated }">
+    <h1>{{title}}</h1>
+    <div class="authentication">
+        <button class="logout" (click)="logout()" *ngIf=isAuthenticated>Log out</button>
+    </div>
+</div>
+
+<firebase-ui (signInSuccess)="login($event)"></firebase-ui>
+
 <div class="content">
     <app-films></app-films>
 </div>
-

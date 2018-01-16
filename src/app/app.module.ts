@@ -9,6 +9,14 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
+import {
+  AuthMethods,
+  AuthProvider,
+  AuthProviderWithCustomConfig,
+  CredentialHelper,
+  FirebaseUIAuthConfig,
+  FirebaseUIModule
+} from 'firebaseui-angular';
 
 import { FilmService } from './services/film.service';
 
@@ -21,6 +29,15 @@ export const firebaseConfig  = {
   messagingSenderId: "1002758279864"
 };
 
+const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
+  providers: [
+    AuthProvider.Password,
+    AuthProvider.Phone
+  ],
+  method: AuthMethods.Popup,
+  credentialHelper: CredentialHelper.AccountChooser
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +47,9 @@ export const firebaseConfig  = {
   imports: [
     BrowserModule,
     AngularFirestoreModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],
   providers: [ FilmService, AngularFireDatabase ],
   bootstrap: [AppComponent]

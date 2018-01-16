@@ -21,7 +21,8 @@ export class FilmsComponent implements OnInit {
     }
 
     fillList(): void {
-        this.filmService.get()
-            .subscribe(films => this.films = films);
+        //ToDo: check if user is authenticated
+         this.filmService.get()
+             .subscribe(films => this.films = films);
     }
 }

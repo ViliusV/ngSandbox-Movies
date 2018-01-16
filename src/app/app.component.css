@@ -1,3 +1,42 @@
+.status {
+    color: #fff;
+    padding: 5px 0;
+    position: relative;
+    width: 100%;
+}
+
+.status.user-logged-in {
+    background-color: #5cb85c;
+}
+
+.status.user-anonymous {
+    background-color: #abb2b9;
+}
+
+.authentication {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: right;
+}
+
+.authentication .logout {
+    background-color: #fff;
+    border: 1px solid #5cb85c;
+    border-radius: 4px;
+    color: #5cb85c;
+    height: 32px;
+    margin: 8px;
+    min-width: 120px;
+}
+
 .content {
     padding: 0 50px;
+}
+
+h1 {
+    margin: 0 auto;
+    text-align: center;
+    width: 60%;
 }
