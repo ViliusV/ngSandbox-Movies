@@ -8,31 +8,30 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 	private title: string = 'Films';
-	private isAuthenticated: boolean = true;
+	private isAuthenticated: boolean = false;
 
 	constructor(private angularFireAuth: AngularFireAuth) {
 
 	}
 
 	ngOnInit() {
-		this.angularFireAuth.authState.subscribe(this.firebaseAuthChangeListener);
-		//ToDo: use EventEmitter, so other components could subscribe to authenticate event
-	}
+		this.angularFireAuth.authState.subscribe(user => {
+			if (user) {
+				// user logged in
+				console.log('Logged in :)');
+				this.isAuthenticated = true;
+			}
+			else {
+				// user not logged in
+				console.log('Anonymous user');
+				this.isAuthenticated = false;
+			}
+		});
 
-	login(event) {
-		this.isAuthenticated = true;
+		//ToDo: use EventEmitter, so other components could subscribe to authenticate event
 	}
 
 	logout() {
 		this.angularFireAuth.auth.signOut();
-		this.isAuthenticated = false;
-	}
-
-	private firebaseAuthChangeListener(response) {
-		if (response) {
-			console.log('Logged in :)');
-		} else {
-			console.log('Logged out :(');
-		}
 	}
 }

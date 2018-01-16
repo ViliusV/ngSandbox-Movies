@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 import { Film } from '../../entities/film';
 
@@ -12,16 +13,20 @@ import { FilmService } from '../../services/film.service';
 export class FilmsComponent implements OnInit {
     films: Film[];
 
-    constructor(private filmService: FilmService) {
+    constructor(private filmService: FilmService, private angularFireAuth: AngularFireAuth) {
 
     }
 
     ngOnInit() {
-        this.fillList();
+        this.angularFireAuth.authState.subscribe(user => {
+			if (user) {
+				this.fillList();
+			}
+		});
+        
     }
 
     fillList(): void {
-        //ToDo: check if user is authenticated
          this.filmService.get()
              .subscribe(films => this.films = films);
     }
