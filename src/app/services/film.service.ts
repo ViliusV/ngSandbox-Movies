@@ -8,6 +8,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 import { Film } from '../entities/film';
 
+//ToDo: Firebase auth
 
 @Injectable()
 export class FilmService {
