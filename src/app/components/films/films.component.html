@@ -1,8 +1,8 @@
 <h1>Films</h1>
 
-<ul>
-    <li *ngFor="let film of films">
-        <span>{{film.title}}</span>
+<ul class="films">
+    <li class="film" *ngFor="let film of films">
+        <h3>{{film.title}}</h3>
         <app-film-details [film] = "film"></app-film-details>
     </li>
 </ul>

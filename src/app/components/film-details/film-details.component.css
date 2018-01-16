@@ -1,0 +1,30 @@
+.film-details button {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+    height: 32px;
+    margin: 10px 0;
+    min-width: 120px;
+}
+
+.film-details .toggle-read-more {
+    background-color: #5cb85c;
+}
+
+.film-details .toggle-plot {
+    background-color: #abb2b9;
+    min-width: 560px;
+}
+
+.film-details .summary {
+    padding: 10px;
+}
+
+.film-details .plot {
+    color: #212f3d;
+    font-size: 90%;
+    letter-spacing: 0.03em;
+    line-height: 1.7em;
+    text-align: justify;
+    width: 70%;
+}

@@ -6,7 +6,8 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-film-details',
-    templateUrl: './film-details.component.html'
+    templateUrl: './film-details.component.html',
+    styleUrls: ['./film-details.component.css']
 })
 export class FilmDetailsComponent implements OnInit {
 

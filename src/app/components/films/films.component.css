@@ -1,0 +1,18 @@
+h1 {
+    color: #2874a6;
+    padding-top: 10px;
+    text-align: center;
+}
+.films {
+    list-style-type: none;
+    padding: 0;
+}
+
+.film {
+    padding: 10px 0;
+}
+
+.film h3 {
+    margin: 0;
+}
+
